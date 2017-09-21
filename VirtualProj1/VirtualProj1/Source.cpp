@@ -70,8 +70,53 @@ public:
 	}
 	
 };
+class ExpensiveInterface
+{
+public:
+	virtual void Draw() = 0;
 
 
+};
+
+class ExpensiveObject:public ExpensiveInterface
+{
+public:
+	ExpensiveObject() {};
+	void Draw() { cout << "expensive object drawn" << endl; }
+
+
+};
+
+
+
+
+class ExpensiveProxy:public ExpensiveInterface
+{
+private:
+	ExpensiveObject*obj;
+	ExpensiveObject* getInstance(void) {
+		if (!obj)
+		{
+			cout << "making new object" << endl;
+			obj = new ExpensiveObject();
+			return obj;
+		}
+		else
+		{
+			return this->obj;
+		}
+	};
+
+public:
+	ExpensiveProxy() { this->obj = 0; };
+	~ExpensiveProxy() {
+		if (obj) { delete obj; }
+	};
+	void Draw() {
+		getInstance()->Draw();
+	};
+
+};
 
 
 int main()
@@ -92,7 +137,8 @@ int main()
 	Api*tempApi = new MyApi();
 	scall->setApi(tempApi);
 	scall->Draw();
-
+	ExpensiveProxy proxy;
+	proxy.Draw();
 
 	system("PAUSE");
 	return 0;
