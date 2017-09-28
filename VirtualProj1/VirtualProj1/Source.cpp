@@ -37,7 +37,7 @@ public:
 		cout << "carrot has been drawn" << endl;
 	}
 };
-class Scallion
+class bridge
 {
 public:
 	void setApi(Api* nuApi) { myApi = nuApi; }
@@ -103,6 +103,7 @@ private:
 		}
 		else
 		{
+			cout << "object already exists" << endl;
 			return this->obj;
 		}
 	};
@@ -121,7 +122,8 @@ public:
 
 int main()
 {
-	cout << "factory stuff" << endl;
+	cout << "factory code" << endl;
+	cout << endl;
 	Factory* factory = new plantFactory;
 	vector<Plant*> plants;
 	for (size_t i = 0; i < 3; i++)
@@ -133,13 +135,27 @@ int main()
 	{
 		plants[i]->Draw();
 	}
-	Scallion *scall = new Scallion();
+	cout << endl;
+	cout << "factory code complete" << endl;
+	cout << endl;
+	system("PAUSE");
+	cout << "bridge code" << endl << endl;
+	bridge *brdge = new bridge();
 	Api*tempApi = new MyApi();
-	scall->setApi(tempApi);
-	scall->Draw();
+	brdge->setApi(tempApi);
+	brdge->Draw();
+	cout<<endl;
+	cout << "bridge code complete" << endl;
+
+	system("PAUSE");
+	cout << "proxy code" << endl << endl;
+
+	cout << endl;
 	ExpensiveProxy proxy;
 	proxy.Draw();
-
+	proxy.Draw();
+	cout<<endl;
+	cout << "proxy code complete" << endl;
 	system("PAUSE");
 	return 0;
 }

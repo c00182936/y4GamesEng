@@ -1,0 +1,5 @@
+﻿  Source.cpp
+  InputHandler.cpp
+c:\users\gameuser\documents\gameseng\commandpattern\commandpattern\inputhandler.h(19): error C2243: 'type cast': conversion from 'Inc *' to 'Command *' exists, but is inaccessible
+  command.cpp
+  Generating Code...
