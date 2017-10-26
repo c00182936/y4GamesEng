@@ -17,7 +17,7 @@ private:
 
 public:
 	InputHandler() { undoBuffer.reserve(16); };
-	void init() { redInc = new Inc; }
+	void init();
 	~InputHandler();
 	void handleInput(int input, int* col);
 

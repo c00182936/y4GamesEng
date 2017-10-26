@@ -1,5 +1,11 @@
 #include "InputHandler.h"
 
+void InputHandler::init()
+{
+	//nothing i do works, inheritance seems to just not like me at the moment
+	redInc = new Inc;
+}
+
 void InputHandler::handleInput(int input, int* col)
 {
 	if (input == 1)
