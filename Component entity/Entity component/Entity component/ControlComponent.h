@@ -1,11 +1,13 @@
 #pragma once
-#include "Component.h"
-class ControlComponent:public
-	Component
+#include <SDL.h>
+#include <vector>
+class ControlComponent
+
 {
 public:
 	ControlComponent();
 	~ControlComponent();
 	void Update();
+	std::vector<int> inputVector;
 };
 

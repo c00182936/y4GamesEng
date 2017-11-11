@@ -1,4 +1,5 @@
 #pragma once
+#include <SDL.h>
 class PositionComponent
 {
 public:
@@ -7,7 +8,7 @@ public:
 
 
 	bool checkCollision(PositionComponent other);
-	
+	SDL_Rect getSDLRect();
 	float positionX;
 	float positionY;
 	float width;

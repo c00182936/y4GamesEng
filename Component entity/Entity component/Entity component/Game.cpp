@@ -6,6 +6,10 @@ Game::Game()
 {
 }
 
+void Game::update()
+{
+}
+
 
 Game::~Game()
 {
