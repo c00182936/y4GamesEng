@@ -1,4 +1,9 @@
-﻿  Player.cpp
-  ControlComponent.cpp
-  Generating Code...
-  Entity component.vcxproj -> C:\Users\gameuser\Documents\GamesEng\Component entity\Entity component\Debug\Entity component.exe
+﻿  Source.cpp
+AiComponent.obj : error LNK2019: unresolved external symbol "public: __thiscall Component::Component(void)" (??0Component@@QAE@XZ) referenced in function "public: __thiscall AiComponent::AiComponent(void)" (??0AiComponent@@QAE@XZ)
+HealthComponent.obj : error LNK2001: unresolved external symbol "public: __thiscall Component::Component(void)" (??0Component@@QAE@XZ)
+PositionComponent.obj : error LNK2001: unresolved external symbol "public: __thiscall Component::Component(void)" (??0Component@@QAE@XZ)
+AiComponent.obj : error LNK2019: unresolved external symbol "public: virtual __thiscall Component::~Component(void)" (??1Component@@UAE@XZ) referenced in function "public: virtual __thiscall AiComponent::~AiComponent(void)" (??1AiComponent@@UAE@XZ)
+HealthComponent.obj : error LNK2001: unresolved external symbol "public: virtual __thiscall Component::~Component(void)" (??1Component@@UAE@XZ)
+PositionComponent.obj : error LNK2001: unresolved external symbol "public: virtual __thiscall Component::~Component(void)" (??1Component@@UAE@XZ)
+Player.obj : error LNK2019: unresolved external symbol "public: virtual __thiscall Entity::~Entity(void)" (??1Entity@@UAE@XZ) referenced in function __unwindfunclet$??0Player@@QAE@XZ$0
+C:\Users\gameuser\Documents\GamesEng\Component entity\Entity component\Debug\Entity component.exe : fatal error LNK1120: 3 unresolved externals

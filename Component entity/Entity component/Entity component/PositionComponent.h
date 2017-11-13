@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
-class PositionComponent
+#include "Component.h"
+class PositionComponent: public Component
 {
 public:
 	PositionComponent();

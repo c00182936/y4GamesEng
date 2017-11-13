@@ -1,6 +1,6 @@
 #pragma once
-
-class HealthComponent
+#include "Component.h"
+class HealthComponent:public Component
 {
 public:
 	HealthComponent();

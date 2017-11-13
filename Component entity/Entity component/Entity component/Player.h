@@ -1,19 +1,19 @@
 #pragma once
 #include "ControlComponent.h"
-#include "GameObject.h"
+
 #include "HealthComponent.h"
-#include "RenderComponent.h"
+#include "Entity.h"
 #include "PositionComponent.h"
 class Player :
-	public GameObject
+	public Entity
 {
 public:
 	Player();
 	HealthComponent health;
-	RenderComponent renderer;
+
 	ControlComponent control;
 	PositionComponent position;
-
+	void removeComponent(Component *c);
 	~Player();
 };
 

@@ -120,22 +120,27 @@
     <ClCompile Include="AiComponent.cpp" />
     <ClCompile Include="ControlComponent.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="HealthComponent.cpp" />
+    <ClCompile Include="HealthSystem.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PositionComponent.cpp" />
-    <ClCompile Include="RenderComponent.cpp" />
+    <ClCompile Include="PositionSystem.cpp" />
+    <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AiComponent.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="ControlComponent.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="ComponentTypes.h" />
     <ClInclude Include="HealthComponent.h" />
+    <ClInclude Include="HealthSystem.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PositionComponent.h" />
-    <ClInclude Include="RenderComponent.h" />
+    <ClInclude Include="PositionSystem.h" />
+    <ClInclude Include="RenderSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
