@@ -11,6 +11,10 @@ void RenderSystem::renderSquare(SDL_Rect sqr, int r, int g, int b)
 }
 
 
+void RenderSystem::Render()
+{
+}
+
 RenderSystem::~RenderSystem()
 {
 }

@@ -118,7 +118,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AiComponent.cpp" />
+    <ClCompile Include="AiSystem.cpp" />
+    <ClCompile Include="Alien.cpp" />
+    <ClCompile Include="Cat.cpp" />
     <ClCompile Include="ControlComponent.cpp" />
+    <ClCompile Include="ControlSystem.cpp" />
+    <ClCompile Include="Dog.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="HealthSystem.cpp" />
@@ -130,8 +135,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AiComponent.h" />
+    <ClInclude Include="AiSystem.h" />
+    <ClInclude Include="Alien.h" />
+    <ClInclude Include="Cat.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ControlComponent.h" />
+    <ClInclude Include="ControlSystem.h" />
+    <ClInclude Include="Dog.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="ComponentTypes.h" />

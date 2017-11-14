@@ -7,7 +7,7 @@ class Entity
 	int id;
 public:
 
-	virtual ~Entity()=0;
+	~Entity() {};
 	void addComponent(Component *c) { components.push_back(c); }
 	virtual void removeComponent(Component *c) = 0;
 	std::vector<Component*> components;
