@@ -1,18 +1,5 @@
-﻿  AiComponent.cpp
-  Generating Code...
-  Compiling...
-  PositionComponent.cpp
-  HealthComponent.cpp
+﻿  RenderSystem.cpp
   Generating Code...
   Skipping... (no relevant changes detected)
   Source.cpp
-  RenderSystem.cpp
-  Player.cpp
-  HealthSystem.cpp
-  Game.cpp
-  Dog.cpp
-  ControlSystem.cpp
-  Cat.cpp
-  Alien.cpp
-  AiSystem.cpp
   Entity component.vcxproj -> C:\Users\gameuser\Documents\GamesEng\Component entity\Entity component\Debug\Entity component.exe

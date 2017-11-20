@@ -5,5 +5,6 @@ class AiComponent:public Component
 public:
 	AiComponent();
 	~AiComponent();
+
 };
 

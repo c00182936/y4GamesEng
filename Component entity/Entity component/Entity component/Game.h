@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "Player.h"
 #include "HealthComponent.h"
+#include "HealthSystem.h"
 #include "ControlComponent.h"
 #include "PositionComponent.h"
 #include "RenderSystem.h"
@@ -18,10 +19,12 @@ public:
 	Alien ayyLmao;
 	Dog pupper;
 	Cat cade;
-
+	AiSystem aiSys;
+	RenderSystem renderSys;
+	HealthSystem healthSys;
 	~Game();
 private:
-	bool loop;
+	bool loop=true;
 
 };
 

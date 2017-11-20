@@ -8,7 +8,7 @@ public:
 	HealthSystem();
 	std::vector<Entity*> entities;
 	void addEntity(Entity*e) { entities.push_back(e); }
-	void update()
+	void Update()
 	{std::cout << "health updated" << std::endl; }
 	~HealthSystem();
 };
