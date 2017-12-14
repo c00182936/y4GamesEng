@@ -1,0 +1,45 @@
+﻿  RenderSystem.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\entity.h(15): warning C4018: '<': signed/unsigned mismatch
+  PositionComponent.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\positioncomponent.cpp(15): error C2259: 'PositionComponent': cannot instantiate abstract class
+  c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\positioncomponent.cpp(15): note: due to following members:
+  c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\positioncomponent.cpp(15): note: 'int Component::getHealth(void)': is abstract
+  c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\component.h(9): note: see declaration of 'Component::getHealth'
+  HealthComponent.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\healthcomponent.cpp(6): error C2084: function 'HealthComponent::HealthComponent(void)' already has a body
+  c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\healthcomponent.h(6): note: see previous definition of '{ctor}'
+  AiComponent.cpp
+  Generating Code...
+  Compiling...
+  Source.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\entity.h(15): warning C4018: '<': signed/unsigned mismatch
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\controlcomponent.h(9): error C2143: syntax error: missing ';' before '}'
+  Player.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\controlcomponent.h(9): error C2143: syntax error: missing ';' before '}'
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\entity.h(15): warning C4018: '<': signed/unsigned mismatch
+  HealthSystem.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\entity.h(15): warning C4018: '<': signed/unsigned mismatch
+  Game.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\entity.h(15): warning C4018: '<': signed/unsigned mismatch
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\controlcomponent.h(9): error C2143: syntax error: missing ';' before '}'
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\game.cpp(8): error C2259: 'PositionComponent': cannot instantiate abstract class
+  c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\game.cpp(8): note: due to following members:
+  c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\game.cpp(8): note: 'int Component::getHealth(void)': is abstract
+  c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\component.h(9): note: see declaration of 'Component::getHealth'
+  Dog.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\entity.h(15): warning C4018: '<': signed/unsigned mismatch
+  ControlSystem.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\entity.h(15): warning C4018: '<': signed/unsigned mismatch
+  Cat.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\entity.h(15): warning C4018: '<': signed/unsigned mismatch
+  Alien.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\entity.h(15): warning C4018: '<': signed/unsigned mismatch
+  AiSystem.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\entity.h(15): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  ControlComponent.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\controlcomponent.h(9): error C2143: syntax error: missing ';' before '}'
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\controlcomponent.cpp(6): error C2084: function 'ControlComponent::ControlComponent(void)' already has a body
+  c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\controlcomponent.h(9): note: see previous definition of '{ctor}'
+  Generating Code...

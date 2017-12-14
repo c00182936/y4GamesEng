@@ -1,0 +1,6 @@
+﻿  Main.cpp
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\entity.h(15): warning C4018: '<': signed/unsigned mismatch
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\project1\main.cpp(72): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\project1\main.cpp(74): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\entity component\entity.h(16): warning C4715: 'Entity::findEntity': not all control paths return a value
+  Project1.vcxproj -> C:\Users\gameuser\Documents\GamesEng\unit testing attempt\Entity component\Debug\Project1.exe

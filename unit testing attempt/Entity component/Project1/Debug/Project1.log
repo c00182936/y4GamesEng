@@ -1,4 +1,0 @@
-﻿  Main.cpp
-c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\project1\main.cpp(45): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\gameuser\documents\gameseng\unit testing attempt\entity component\project1\main.cpp(47): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Project1.vcxproj -> C:\Users\gameuser\Documents\GamesEng\unit testing attempt\Entity component\Debug\Project1.exe
