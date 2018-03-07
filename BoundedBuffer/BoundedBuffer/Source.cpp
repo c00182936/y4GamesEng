@@ -4,17 +4,38 @@
 #include <mutex>         
 #include <condition_variable>
 
-std::mutex mtx;             // mutex for critical section
-std::mutex read;
-std::mutex write;
-std::mutex Baton;
+#include <time.h>
+class semaphore
+{
+public:
+	semaphore() { value = 0; };
+	semaphore(int val) :value(val) {};
+	~semaphore() {};
+	void dec(int val) { value -= val; };
+	void inc(int val) { value += val; };
+	bool compare(int val) {
+		if (val == value)
+		{
+			return true;
+		}
+		return false;
+	};
+	int value;
+private:
+
+};
+std::mutex mtx;// mutex for critical section
 std::condition_variable cv; // condition variable for critical section  
 bool ready = false;         // Tell threads to run
+bool readReady = false;
 int current = 0;           // current count
-const int maxCount = 15;
-int fillCount = 0, emptyCount = maxCount;
+const int maxCount = 15; const int empty=0;
+int writeCount = 0, readCount=0, writeFull = 15;//counter and limiter to the amount of reads and writes
 int bufferArray[maxCount];
-							/* Prints the thread id / max number of threads */
+bool readWrite = true;
+
+semaphore counter;
+/* Prints the thread id / max number of threads */
 void print_num(int num, int max) {
 
 	std::unique_lock<std::mutex> lck(mtx);
@@ -30,39 +51,48 @@ void print_num(int num, int max) {
 }
 void produce(int num)
 {
-	std::unique_lock<std::mutex> lock(Baton);
-	while (!ready||emptyCount==0) { cv.wait(lock); }//checks if the ready bool, or amount in array is less than max or there's empty spots
-	if (Baton.try_lock())
+	std::unique_lock<std::mutex> lock(mtx);
+	while (!ready||counter.value>maxCount||writeCount>writeFull) { cv.wait(lock); }//checks if the ready bool, or amount in array is less than max or there's empty spots
+	if (writeCount > writeFull)
 	{
-		bufferArray[fillCount] = num;
-		fillCount++;
-		emptyCount--;
-		Baton.unlock();
+		std::cout << "write full" << std::endl;
+		readReady = true;
 	}
-	else
+	if (readWrite)
 	{
+		readWrite = false;
 
+		bufferArray[counter.value]=num;
+		counter.inc(1);
+		readWrite = true;
+		writeCount++;
+		std::cout << "written at thread: "<<num << std::endl;
 	}
+
 	cv.notify_all();
-	std::cout << "finished write: " << fillCount << std::endl;
+
 }
 
 void consume(int num)
 {
-	std::unique_lock<std::mutex> lock(Baton);
-	while (!ready||maxCount==emptyCount) { cv.wait(lock); }//checks if the ready bool, or amount in array is equal to max or there's no empty spots
-	if (Baton.try_lock())
+	std::unique_lock<std::mutex> lock(mtx);
+	while (!ready || counter.value <= 0||readCount>writeFull) { cv.wait(lock); }//checks if the ready bool, or amount in array is equal to max or there's no empty spots
+	if (readCount > writeFull)
 	{
-		std::cout << "array at: " << fillCount << " is:" << bufferArray[fillCount] << std::endl;
-		bufferArray[fillCount] = -1;
-		fillCount--;
-		emptyCount++;
-		Baton.unlock();
+		std::cout << "read full" << std::endl;
 	}
-	else
+	if (readWrite)
 	{
-		std::cout << "consume :" << num << "failed" << std::endl;
+		readWrite = false;
+
+		std::cout << bufferArray[counter.value]<<std::endl;
+		counter.dec(1);
+		bufferArray[counter.value] = -1;
+		readWrite = true;
+		std::cout << "read at thread: " << num << std::endl;
+		readCount++;
 	}
+
 	cv.notify_all();
 }
 /* Changes ready to true, and begins the threads printing */
@@ -78,9 +108,9 @@ int main() {
 	{
 		bufferArray[i] = -1;
 	}
-	int threadnum = 15;
-	std::thread produceThreads[15];
-	std::thread consumeThreads[15];
+	int threadnum = maxCount;
+	std::thread produceThreads[maxCount];
+	std::thread consumeThreads[maxCount];
 	int tempID;
 	/* spawn threadnum threads */
 	for (int id = 0; id < threadnum; id++)
@@ -96,19 +126,20 @@ int main() {
 	run(); // Allows threads to run
 
 		   /* Merge all threads to the main thread */
-	for (int id = 0; id < threadnum; id++)
+	while (writeCount<writeFull&&readCount<writeFull)
 	{
-		tempID = id;
-		consumeThreads[tempID].join();
+
 	}
-	for (int id = threadnum; id > 0; id--)
+	if (writeCount >= writeFull ||readCount>=writeFull)
 	{
-		tempID = id;
-		consumeThreads[tempID].join();
+		for (int id = 0; id < threadnum; id++)
+		{
+			tempID = id;
+			produceThreads[tempID].join();
+			consumeThreads[tempID].join();
+		}
 	}
 
-	std::cout << "\nCompleted semaphore example!\n";
-	std::cout << std::endl;
-	
+//	system("pause");
 	return 0;
 }
