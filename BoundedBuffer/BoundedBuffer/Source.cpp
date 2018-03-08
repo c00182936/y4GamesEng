@@ -24,8 +24,8 @@ public:
 private:
 
 };
-std::mutex mtx;// mutex for critical section
-std::condition_variable cv; // condition variable for critical section  
+std::mutex mtx;// 
+std::condition_variable cv; // stops the thread from running until ready
 bool ready = false;         // Tell threads to run
 bool readReady = false;
 int current = 0;           // current count
@@ -35,20 +35,7 @@ int bufferArray[maxCount];
 bool readWrite = true;
 
 semaphore counter;
-/* Prints the thread id / max number of threads */
-void print_num(int num, int max) {
 
-	std::unique_lock<std::mutex> lck(mtx);
-	while (num != current || !ready) { cv.wait(lck); }
-	current++;
-	std::cout << "Thread: ";
-	std::cout << num + 1 << " / " << max;
-	std::cout << " current count is: ";
-	std::cout << current << std::endl;
-
-	/* Notify next threads to check if it is their turn */
-	cv.notify_all();
-}
 void produce(int num)
 {
 	std::unique_lock<std::mutex> lock(mtx);
@@ -120,13 +107,8 @@ int main() {
 		produceThreads[tempID] = std::thread(produce, tempID);
 		consumeThreads[tempID] = std::thread(consume, tempID);
 	}
-	std::cout << "\nRunning " << threadnum;
-	std::cout << " in parallel: \n" << std::endl;
-
 	run(); // Allows threads to run
-
-		   /* Merge all threads to the main thread */
-	while (writeCount<writeFull&&readCount<writeFull)
+	while (writeCount<writeFull&&readCount<writeFull)//stops the main thread from exiting before the reads and writes are complete
 	{
 
 	}
