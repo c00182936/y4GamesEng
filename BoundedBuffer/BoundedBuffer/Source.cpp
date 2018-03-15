@@ -4,7 +4,6 @@
 #include <mutex>         
 #include <condition_variable>
 
-#include <time.h>
 class semaphore
 {
 public:
@@ -45,6 +44,10 @@ void produce(int num)
 		std::cout << "write full" << std::endl;
 		readReady = true;
 	}
+	while (!readWrite)
+	{
+		int i = 0;
+	}
 	if (readWrite)
 	{
 		readWrite = false;
@@ -55,7 +58,10 @@ void produce(int num)
 		writeCount++;
 		std::cout << "written at thread: "<<num << std::endl;
 	}
-
+	if (writeCount == writeFull)
+	{
+		readReady = true;
+	}
 	cv.notify_all();
 
 }
@@ -63,20 +69,26 @@ void produce(int num)
 void consume(int num)
 {
 	std::unique_lock<std::mutex> lock(mtx);
-	while (!ready || counter.value <= 0||readCount>writeFull) { cv.wait(lock); }//checks if the ready bool, or amount in array is equal to max or there's no empty spots
+	while (!readReady || counter.value <= 0||readCount>writeFull) { cv.wait(lock); }//checks if the ready bool, or amount in array is equal to max or there's no empty spots
 	if (readCount > writeFull)
 	{
 		std::cout << "read full" << std::endl;
+	}
+	
+	while (!readWrite)
+	{
+		int i = 0;
 	}
 	if (readWrite)
 	{
 		readWrite = false;
 
-		std::cout << bufferArray[counter.value]<<std::endl;
+		std::cout << bufferArray[counter.value-1]<<std::endl;
 		counter.dec(1);
+		std::cout << "read"<< std::endl;
 		bufferArray[counter.value] = -1;
 		readWrite = true;
-		std::cout << "read at thread: " << num << std::endl;
+
 		readCount++;
 	}
 
@@ -84,7 +96,6 @@ void consume(int num)
 }
 /* Changes ready to true, and begins the threads printing */
 void run() {
-	std::unique_lock<std::mutex> lck(mtx);
 	ready = true;
 	cv.notify_all();
 }
@@ -122,6 +133,6 @@ int main() {
 		}
 	}
 
-//	system("pause");
+	system("pause");
 	return 0;
 }
